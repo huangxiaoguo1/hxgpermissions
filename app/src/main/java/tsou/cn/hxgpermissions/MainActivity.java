@@ -1,8 +1,6 @@
 package tsou.cn.hxgpermissions;
 
 import android.Manifest;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +14,7 @@ import tsou.cn.lib_primissions.HxgPermissionSuccess;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final int CALL_PHONE_REQUESE_CODE = 258;
+    private static final int REQUESE_CODE = 258;
     /**
      * 打电话
      */
@@ -29,22 +27,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
     }
 
-    @SuppressWarnings("ResourceType")
-    @HxgPermissionSuccess(requestCode = CALL_PHONE_REQUESE_CODE)
-    private void callPhone() {
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        Uri data = Uri.parse("tel:13273026553");
-        intent.setData(data);
-        startActivity(intent);
+    @HxgPermissionSuccess(requestCode = REQUESE_CODE)
+    private void success() {
+        Toast.makeText(this, "成功了", Toast.LENGTH_SHORT).show();
     }
 
-    @HxgPermissionFail(requestCode = CALL_PHONE_REQUESE_CODE)
-    private void callPhoneFail() {
+    @HxgPermissionFail(requestCode = REQUESE_CODE)
+    private void fail() {
         Toast.makeText(this, "失败了", Toast.LENGTH_SHORT).show();
     }
 
     /**
-     * 使用时放在BaseActivity中
+     * 使用时放在BaseActivity中或BaseFragment中
      * @param requestCode
      * @param permissions
      * @param grantResults
@@ -67,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn:
                 HxgPermissionHelper.with(this)
-                        .requestCode(CALL_PHONE_REQUESE_CODE)
+                        .requestCode(REQUESE_CODE)
                         .requestPermission(Manifest.permission.CALL_PHONE,
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 Manifest.permission.CAMERA)
