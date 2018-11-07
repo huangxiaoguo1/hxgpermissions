@@ -1,8 +1,8 @@
 package tsou.cn.lib_primissions;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 
 import java.util.List;
 

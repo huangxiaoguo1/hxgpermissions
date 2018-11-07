@@ -3,8 +3,10 @@ package tsou.cn.hxgpermissions;
 import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -12,29 +14,35 @@ import tsou.cn.lib_primissions.HxgPermissionFail;
 import tsou.cn.lib_primissions.HxgPermissionHelper;
 import tsou.cn.lib_primissions.HxgPermissionSuccess;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private static final int REQUESE_CODE = 258;
+public class PlusOneFragment extends Fragment implements View.OnClickListener {
+    private View view;
     /**
-     * 打电话
+     * 我是Fragment
      */
     private Button mBtn;
+    private static final int REQUESE_CODE = 259;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_plus_one, container, false);
+        initView(view);
+        return view;
+    }
+
+    private void initView(View view) {
+        mBtn = (Button) view.findViewById(R.id.btn);
+        mBtn.setOnClickListener(this);
     }
 
     @HxgPermissionSuccess(requestCode = REQUESE_CODE)
     private void success() {
-        Toast.makeText(this, "成功了", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "成功了", Toast.LENGTH_SHORT).show();
     }
 
     @HxgPermissionFail(requestCode = REQUESE_CODE)
     private void fail() {
-        Toast.makeText(this, "失败了", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "失败了", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -48,12 +56,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         HxgPermissionHelper.requestPermissionsResult(this, requestCode, permissions);
-    }
-
-    private void initView() {
-        mBtn = (Button) findViewById(R.id.btn);
-        mBtn.setOnClickListener(this);
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_main, new PlusOneFragment()).commit();
     }
 
     @Override
