@@ -63,8 +63,25 @@ HxgPermissionHelper.with(this)
 
 ```
 
-
-
+######混淆
+```
+-keepattributes *Annotation*
+# keep annotated by HxgPermissionSuccess,HxgPermissionFail
+-keep @tsou.cn.lib_primissions.HxgPermissionSuccess class * {*;}
+-keep @tsou.cn.lib_primissions.HxgPermissionFail class * {*;}
+-keep class * {
+        @tsou.cn.lib_primissions.HxgPermissionSuccess <fields>;
+}
+-keepclassmembers class * {
+        @tsou.cn.lib_primissions.HxgPermissionSuccess <methods>;
+}
+-keep class * {
+        @tsou.cn.lib_primissions.HxgPermissionFail <fields>;
+}
+-keepclassmembers class * {
+        @tsou.cn.lib_primissions.HxgPermissionFail <methods>;
+}
+```
 
 
 
