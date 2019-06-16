@@ -12,7 +12,7 @@
   
   
  	dependencies {
-	        implementation 'com.github.huangxiaoguo1:hxgpermissions:1.0.1'
+	        implementation 'com.github.huangxiaoguo1:hxgpermissions:1.0.2'
 	}
 ```
 
