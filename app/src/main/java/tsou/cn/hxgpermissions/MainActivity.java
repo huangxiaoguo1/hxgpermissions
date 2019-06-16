@@ -4,6 +4,7 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.e("huangxiaoguo","onRequestPermissionsResult");
         HxgPermissionHelper.requestPermissionsResult(this, requestCode, permissions);
     }
 
@@ -54,6 +56,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtn = (Button) findViewById(R.id.btn);
         mBtn.setOnClickListener(this);
         getSupportFragmentManager().beginTransaction().add(R.id.fl_main, new PlusOneFragment()).commit();
+//        HxgPermissionHelper.with(this)
+//                .requestCode(REQUESE_CODE)
+//                .requestPermission(Manifest.permission.CALL_PHONE,
+//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                        Manifest.permission.CAMERA)
+//                .request();
     }
 
     @Override

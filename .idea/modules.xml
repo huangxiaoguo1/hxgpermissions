@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HxgPermissions.iml" filepath="$PROJECT_DIR$/HxgPermissions.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hxgpermissions.iml" filepath="$PROJECT_DIR$/hxgpermissions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_primissions/lib_primissions.iml" filepath="$PROJECT_DIR$/lib_primissions/lib_primissions.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_primissions/lib_primissions.iml" filepath="$PROJECT_DIR$/lib_primissions/lib_primissions.iml" />
     </modules>
   </component>

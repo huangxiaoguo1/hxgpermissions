@@ -79,9 +79,17 @@ public class HxgPermissionHelper {
             HxgPermissionUtils.executeSuccessMethod(mObject, mRequestCode);
         } else {
             //申请权限
-            ActivityCompat.requestPermissions(HxgPermissionUtils.getActivity(mObject),
-                    deniedPermissions.toArray(new String[deniedPermissions.size()]),
-                    mRequestCode);
+            if (mObject instanceof Activity) {
+                ActivityCompat.requestPermissions(HxgPermissionUtils.getActivity(mObject),
+                        deniedPermissions.toArray(new String[deniedPermissions.size()]),
+                        mRequestCode);
+            }
+            if (mObject instanceof Fragment) {
+                HxgPermissionUtils.getFragment(mObject).requestPermissions(
+                        deniedPermissions.toArray(new String[deniedPermissions.size()]),
+                        mRequestCode);
+            }
+
         }
     }
 

@@ -101,7 +101,18 @@ class HxgPermissionUtils {
         }
         return null;
     }
-
+    /**
+     * 获取Fragment
+     *
+     * @param object
+     * @return
+     */
+    public static Fragment getFragment(Object object) {
+        if (object instanceof Fragment) {
+            return (Fragment) object;
+        }
+        return null;
+    }
     /**
      * 执行失败的方法
      *

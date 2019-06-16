@@ -4,6 +4,7 @@ import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +34,17 @@ public class PlusOneFragment extends Fragment implements View.OnClickListener {
     private void initView(View view) {
         mBtn = (Button) view.findViewById(R.id.btn);
         mBtn.setOnClickListener(this);
+        HxgPermissionHelper.with(this)
+                .requestCode(REQUESE_CODE)
+                .requestPermission(Manifest.permission.CALL_PHONE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.CAMERA)
+                .request();
     }
 
     @HxgPermissionSuccess(requestCode = REQUESE_CODE)
     private void success() {
+        Log.e("huangxiaoguo","HxgPermissionSuccess--fragment");
         Toast.makeText(getContext(), "成功了", Toast.LENGTH_SHORT).show();
     }
 
@@ -55,6 +63,7 @@ public class PlusOneFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.e("huangxiaoguo","onRequestPermissionsResult-------------");
         HxgPermissionHelper.requestPermissionsResult(this, requestCode, permissions);
     }
 
